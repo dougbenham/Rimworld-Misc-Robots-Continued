@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<Operation Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+			<li Class="PatchOperationTest"><xpath>Defs/WorkTypeDefs[defName = "HaulingUrgent"]</xpath></li>
+			<li Class="PatchOperationAdd">
+				<xpath>
+					*/ThingDef[defName = "AIRobot_Hauler"]/robotWorkTypes
+				</xpath>
+				<value><li><workTypeDef>HaulingUrgent</workTypeDef><priority>1</priority></li></value>
+			</li>
+		</operations>
+	</Operation>
+</Patch>

@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef Class="AIRobot.X2_ThingDef_AIRobot" Name="Base_X2_AIRobot" Abstract="True">
+		<thingClass>AIRobot.X2_AIRobot</thingClass>
+		<uiIconPath>Things/Pawn/Humanlike/UI/IconHuman</uiIconPath>
+		<category>Pawn</category>
+		<selectable>true</selectable>
+		<tickerType>Normal</tickerType>
+		<altitudeLayer>Pawn</altitudeLayer>
+		<useHitPoints>false</useHitPoints>
+		<hasTooltip>true</hasTooltip>
+		<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+		<statBases>
+			<MarketValue>10</MarketValue>
+			<MoveSpeed>6</MoveSpeed>
+			<CarryingCapacity>100</CarryingCapacity>
+			<Flammability>1.0</Flammability>
+			<LeatherAmount>0</LeatherAmount>
+			<MeatAmount>0</MeatAmount>
+			<FilthRate>0</FilthRate>
+			<PsychicSensitivity>0</PsychicSensitivity>
+			<ToxicSensitivity>0</ToxicSensitivity>
+			<Mass>15</Mass>
+			<ComfyTemperatureMin>-100</ComfyTemperatureMin>
+			<ComfyTemperatureMax>100</ComfyTemperatureMax>
+			<WorkSpeedGlobal>2</WorkSpeedGlobal>
+		</statBases>
+		<inspectorTabs>
+			<li>ITab_Pawn_Health</li>
+			<li>ITab_Pawn_Needs</li>
+			<li>ITab_Pawn_Gear</li>
+		</inspectorTabs>
+		<comps>
+			<li>
+				<compClass>CompAttachBase</compClass>
+			</li>
+		</comps>
+		<drawGUIOverlay>true</drawGUIOverlay>
+		<race>
+			<body>AIRobot</body>
+			<baseBodySize>0.65</baseBodySize>
+			<baseHungerRate>0.5</baseHungerRate>
+			<baseHealthScale>0.5</baseHealthScale>
+			<thinkTreeMain>X2_AIRobot</thinkTreeMain>
+			<thinkTreeConstant>X2_AIRobotConstant</thinkTreeConstant>
+			<fleshType>Mechanoid</fleshType>
+			<foodType>None</foodType>
+			<intelligence>ToolUser</intelligence>
+			<makesFootprints>false</makesFootprints>
+			<nameCategory>HumanStandard</nameCategory>
+			<wildness>0.1</wildness>
+			<mateMtbHours>0</mateMtbHours>
+			<ageGenerationCurve>
+				<points>
+					<li>(0,0)</li>
+					<li>(1,100)</li>
+					<li>(5,50)</li>
+					<li>(20,0)</li>
+				</points>
+			</ageGenerationCurve>
+			<lifeExpectancy>5</lifeExpectancy>
+			<lifeStageAges>
+				<li>
+					<def>MechanoidFullyFormed</def>
+					<minAge>0</minAge>
+				</li>
+			</lifeStageAges>
+			<soundMeleeHitPawn>Pawn_Melee_MechanoidBash_HitPawn</soundMeleeHitPawn>
+			<soundMeleeHitBuilding>Pawn_Melee_MechanoidBash_HitBuilding</soundMeleeHitBuilding>
+			<soundMeleeMiss>Pawn_Melee_MechanoidBash_Miss</soundMeleeMiss>
+		</race>
+		<tools>
+			<li>
+				<label>left manipulator</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>4</power>
+				<cooldownTime>1.6</cooldownTime>
+				<linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+				<chanceFactor>1.0</chanceFactor>
+			</li>
+			<li>
+				<label>right manipulator</label>
+				<capacities>
+					<li>Cut</li>
+				</capacities>
+				<power>4</power>
+				<cooldownTime>1.6</cooldownTime>
+				<linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+				<chanceFactor>0.8</chanceFactor>
+			</li>
+			<li>
+				<label>head</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>3</power>
+				<cooldownTime>2.5</cooldownTime>
+				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+				<chanceFactor>0.2</chanceFactor>
+			</li>
+		</tools>
+		<robotSkills>
+			<li><skillDef>Cooking</skillDef><level>20</level><passion>Minor</passion></li>
+			<li><skillDef>Plants</skillDef><level>20</level><passion>Minor</passion></li>
+			<li><skillDef>Animals</skillDef><level>20</level><passion>Minor</passion></li>
+			<li><skillDef>Construction</skillDef><level>20</level><passion>Minor</passion></li>
+			<li><skillDef>Mining</skillDef><level>20</level><passion>Minor</passion></li>
+			<li><skillDef>Crafting</skillDef><level>20</level><passion>Minor</passion></li>
+			<li><skillDef>Intellectual</skillDef><level>20</level><passion>Minor</passion></li>
+			<li><skillDef>Medicine</skillDef><level>20</level><passion>Minor</passion></li>
+		</robotSkills>
+		<allowLearning>false</allowLearning>
+	</ThingDef>
+
+
+	<!-- ============================ Robots ========================== -->
+
+	<ThingDef ParentName="Base_X2_AIRobot"  Class="AIRobot.X2_ThingDef_AIRobot">
+		<defName>AIRobot_GardenerBot</defName>
+		<label>Gardener Bot</label>
+		<description>A robot for gardening work (like cutting trees). It can also do cooking.</description>
+		<robotWorkTypes>
+			<li>
+				<workTypeDef>Cooking</workTypeDef>
+				<priority>2</priority>
+			</li>
+			<li>
+				<workTypeDef>PlantCutting</workTypeDef>
+				<priority>1</priority>
+			</li>
+			<li>
+				<workTypeDef>Growing</workTypeDef>
+				<priority>1</priority>
+			</li>
+		</robotWorkTypes>
+	</ThingDef>
+	
+	<ThingDef ParentName="Base_X2_AIRobot"  Class="AIRobot.X2_ThingDef_AIRobot">
+		<defName>AIRobot_CraftingBot</defName>
+		<label>Crafting Bot</label>
+		<description>A robot for crafting (smithing/tailoring/crafting).</description>
+		<robotWorkTypes>
+			<li>
+				<workTypeDef>Smithing</workTypeDef>
+				<priority>1</priority>
+			</li>
+			<li>
+				<workTypeDef>Tailoring</workTypeDef>
+				<priority>1</priority>
+			</li>
+			<li>
+				<workTypeDef>Crafting</workTypeDef>
+				<priority>1</priority>
+			</li>
+		</robotWorkTypes>
+	</ThingDef>
+	
+	<ThingDef ParentName="Base_X2_AIRobot"  Class="AIRobot.X2_ThingDef_AIRobot">
+		<defName>AIRobot_MiningBot</defName>
+		<label>Mining Bot</label>
+		<description>A robot for mining.</description>
+		<robotWorkTypes>
+			<li>
+				<workTypeDef>Mining</workTypeDef>
+				<priority>1</priority>
+			</li>
+		</robotWorkTypes>
+	</ThingDef>
+	
+	<ThingDef ParentName="Base_X2_AIRobot"  Class="AIRobot.X2_ThingDef_AIRobot">
+		<defName>AIRobot_ConstructionBot</defName>
+		<label>Construction Bot</label>
+		<description>A robot for constructing and repairing.</description>
+		<robotWorkTypes>
+			<li>
+				<workTypeDef>Construction</workTypeDef>
+				<priority>1</priority>
+			</li>
+		</robotWorkTypes>
+	</ThingDef>
+	
+	<ThingDef ParentName="Base_X2_AIRobot" Class="AIRobot.X2_ThingDef_AIRobot">
+		<defName>AIRobot_ERBot</defName>
+		<label>ER Bot</label>
+		<description>A robot for emergency response, such as firefighting and doctoring.</description>
+		<robotWorkTypes>
+			<li>
+				<workTypeDef>Doctor</workTypeDef>
+				<priority>1</priority>
+			</li>
+			<li>
+				<workTypeDef>Firefighter</workTypeDef>
+				<priority>2</priority>
+			</li>
+		</robotWorkTypes>
+	</ThingDef>
+	
+	<ThingDef ParentName="Base_X2_AIRobot" Class="AIRobot.X2_ThingDef_AIRobot">
+		<defName>AIRobot_AnalysisBot</defName>
+		<label>Analysis Bot</label>
+		<description>A robot for researching, analysis and data-processing jobs.</description>
+		<robotWorkTypes>
+			<li>
+				<workTypeDef>Research</workTypeDef>
+				<priority>1</priority>
+			</li>
+		</robotWorkTypes>
+	</ThingDef>
+
+	<ThingDef Class="AIRobot.X2_ThingDef_AIRobot" ParentName="Base_X2_AIRobot">
+		<defName>AIRobot_Hauler</defName>
+		<label>HaulingBot</label>
+		<description>A hauling robot.</description>
+		<statBases>
+			<CarryingCapacity>200</CarryingCapacity>
+		</statBases>
+		<robotWorkTypes>
+			<li>
+				<workTypeDef>Hauling</workTypeDef>
+				<priority>1</priority>
+			</li>
+		</robotWorkTypes>
+	</ThingDef>
+
+	<ThingDef Class="AIRobot.X2_ThingDef_AIRobot" ParentName="Base_X2_AIRobot">
+		<defName>AIRobot_Cleaner</defName>
+		<label>CleaningBot</label>
+		<description>A cleaning robot.</description>
+		<robotWorkTypes>
+			<li>
+				<workTypeDef>Cleaning</workTypeDef>
+				<priority>1</priority>
+			</li>
+		</robotWorkTypes>
+	</ThingDef>
+
+</Defs>

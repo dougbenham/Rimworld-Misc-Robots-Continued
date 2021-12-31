@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!--================================ Abstract bases ======================================-->
+
+	<ThingDef Class="AIRobot.X2_ThingDef_AIRobot_Building_RechargeStation" Name="Base_X2_AIRobotRechargeStation" Abstract="True">
+		<thingClass>AIRobot.X2_Building_AIRobotRechargeStation</thingClass>
+		<category>Building</category>
+		<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+		<selectable>true</selectable>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<repairEffect>Repair</repairEffect>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<filthLeaving>Filth_RubbleBuilding</filthLeaving>
+		<tradeNeverStack>true</tradeNeverStack>
+		<stackLimit>1</stackLimit>
+		<recipeMaker>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+			<skillRequirements>
+				<Crafting>9</Crafting>
+			</skillRequirements>
+			<researchPrerequisite>Fabrication</researchPrerequisite>
+			<recipeUsers>
+				<li>FabricationBench</li>
+			</recipeUsers>
+		</recipeMaker>
+		<minifiedDef>AIRobot_MinifiedRechargeStation</minifiedDef>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>Standable</passability>
+		<thingCategories>
+			<li>BuildingsFurniture</li>
+		</thingCategories>
+		<fillPercent>0.25</fillPercent>
+		<pathCost>0</pathCost>
+		<castEdgeShadows>True</castEdgeShadows>
+		<useHitPoints>True</useHitPoints>
+		<rechargeEfficiency>1.0</rechargeEfficiency>
+		<size>(1,1)</size>
+		<statBases>
+			<WorkToMake>50000</WorkToMake>
+			<MarketValue>2300</MarketValue>
+			<SellPriceFactor>0.40</SellPriceFactor>
+			<Mass>10</Mass>
+			<Beauty>0</Beauty>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<costList>
+			<Steel>150</Steel>
+			<Plasteel>30</Plasteel>
+			<Gold>8</Gold>
+			<ComponentIndustrial>5</ComponentIndustrial>
+		</costList>
+		<robotRepairCosts>
+			<Steel>35</Steel>
+			<Plasteel>5</Plasteel>
+			<Gold>3</Gold>
+			<ComponentIndustrial>2</ComponentIndustrial>
+		</robotRepairCosts>
+		<tickerType>Normal</tickerType>
+		<tradeTags>
+			<li>Robots</li>
+			<li>Exotic</li>
+		</tradeTags>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>100</basePowerConsumption>
+				<transmitsPower>false</transmitsPower>
+			</li>
+		</comps>
+	</ThingDef>	
+
+	<!--================================ Concrete ======================================-->
+	
+	<ThingDef ParentName="Base_X2_AIRobotRechargeStation" Class="AIRobot.X2_ThingDef_AIRobot_Building_RechargeStation">
+		<defName>AIRobot_RechargeStation_GardenerBot</defName>
+		<label>GardenBot Base Station</label>
+		<description>This station comes equipped with a specialized robot.</description>
+		<graphicData>
+			<texPath>Things/Building/AIRobot_RechargeStation/AIRobotRechargeStation_GardenerBot</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<drawSize>(1,1)</drawSize>
+			<damageData>
+				<rect>(0.05,0.05,0.95,0.95)</rect>
+			</damageData>
+		</graphicData>
+		
+		<secondaryGraphicPath>Things/Building/AIRobot_RechargeStation/AIRobotRechargeStation_Empty1</secondaryGraphicPath>
+		<spawnThingDef>AIRobot_GardenerBot</spawnThingDef>
+	</ThingDef>
+	
+	<ThingDef ParentName="Base_X2_AIRobotRechargeStation" Class="AIRobot.X2_ThingDef_AIRobot_Building_RechargeStation">
+		<defName>AIRobot_RechargeStation_CraftingBot</defName>
+		<label>CraftingBot Base Station</label>
+		<description>This station comes equipped with a specialized robot.</description>
+		<graphicData>
+			<texPath>Things/Building/AIRobot_RechargeStation/AIRobotRechargeStation_CraftingBot</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<drawSize>(1,1)</drawSize>
+			<damageData>
+				<rect>(0.05,0.05,0.95,0.95)</rect>
+			</damageData>
+		</graphicData>
+
+		<secondaryGraphicPath>Things/Building/AIRobot_RechargeStation/AIRobotRechargeStation_Empty1</secondaryGraphicPath>
+		<spawnThingDef>AIRobot_CraftingBot</spawnThingDef>
+	</ThingDef>
+	
+	<ThingDef ParentName="Base_X2_AIRobotRechargeStation" Class="AIRobot.X2_ThingDef_AIRobot_Building_RechargeStation">
+		<defName>AIRobot_RechargeStation_MiningBot</defName>
+		<label>MiningBot Base Station</label>
+		<description>This station comes equipped with a specialized robot.</description>
+		<graphicData>
+			<texPath>Things/Building/AIRobot_RechargeStation/AIRobotRechargeStation_MiningBot</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<drawSize>(1,1)</drawSize>
+			<damageData>
+				<rect>(0.05,0.05,0.95,0.95)</rect>
+			</damageData>
+		</graphicData>
+
+		<secondaryGraphicPath>Things/Building/AIRobot_RechargeStation/AIRobotRechargeStation_Empty1</secondaryGraphicPath>
+		<spawnThingDef>AIRobot_MiningBot</spawnThingDef>
+	</ThingDef>
+	
+	<ThingDef ParentName="Base_X2_AIRobotRechargeStation" Class="AIRobot.X2_ThingDef_AIRobot_Building_RechargeStation">
+		<defName>AIRobot_RechargeStation_ConstructionBot</defName>
+		<label>ConstructionBot Base Station</label>
+		<description>This station comes equipped with a specialized robot.</description>
+		<graphicData>
+			<texPath>Things/Building/AIRobot_RechargeStation/AIRobotRechargeStation_ConstructionBot</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<drawSize>(1,1)</drawSize>
+			<damageData>
+				<rect>(0.05,0.05,0.95,0.95)</rect>
+			</damageData>
+		</graphicData>
+
+		<secondaryGraphicPath>Things/Building/AIRobot_RechargeStation/AIRobotRechargeStation_Empty1</secondaryGraphicPath>
+		<spawnThingDef>AIRobot_ConstructionBot</spawnThingDef>
+	</ThingDef>
+	
+	<ThingDef ParentName="Base_X2_AIRobotRechargeStation" Class="AIRobot.X2_ThingDef_AIRobot_Building_RechargeStation">
+		<defName>AIRobot_RechargeStation_ERBot</defName>
+		<label>ER Bot Base Station</label>
+		<description>This station comes equipped with a specialized robot.</description>
+		<graphicData>
+			<texPath>Things/Building/AIRobot_RechargeStation/AIRobotRechargeStation_ERBot</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<drawSize>(1,1)</drawSize>
+			<damageData>
+				<rect>(0.05,0.05,0.95,0.95)</rect>
+			</damageData>
+		</graphicData>
+
+		<secondaryGraphicPath>Things/Building/AIRobot_RechargeStation/AIRobotRechargeStation_Empty1</secondaryGraphicPath>
+		<spawnThingDef>AIRobot_ERBot</spawnThingDef>
+	</ThingDef>
+	
+	<ThingDef ParentName="Base_X2_AIRobotRechargeStation" Class="AIRobot.X2_ThingDef_AIRobot_Building_RechargeStation">
+		<defName>AIRobot_RechargeStation_AnalysisBot</defName>
+		<label>Analysis Bot Base Station</label>
+		<description>This station comes equipped with a specialized robot.</description>
+		<graphicData>
+			<texPath>Things/Building/AIRobot_RechargeStation/AIRobotRechargeStation_AnalysisBot</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<drawSize>(1,1)</drawSize>
+			<damageData>
+				<rect>(0.05,0.05,0.95,0.95)</rect>
+			</damageData>
+		</graphicData>
+
+		<secondaryGraphicPath>Things/Building/AIRobot_RechargeStation/AIRobotRechargeStation_Empty1</secondaryGraphicPath>
+		<spawnThingDef>AIRobot_AnalysisBot</spawnThingDef>
+	</ThingDef>
+
+	<ThingDef Class="AIRobot.X2_ThingDef_AIRobot_Building_RechargeStation" ParentName="Base_X2_AIRobotRechargeStation">
+		<defName>AIRobot_RechargeStation_Hauler</defName>
+		<label>Hauler Base Station</label>
+		<description>This station comes equipped with a specialized robot.</description>
+		<graphicData>
+			<texPath>Things/Building/AIRobot_RechargeStation/AIRobotRechargeStation_HBot</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<drawSize>(1,1)</drawSize>
+			<damageData>
+				<rect>(0.05,0.05,0.95,0.95)</rect>
+			</damageData>
+		</graphicData>
+		<statBases>
+			<MarketValue>1500</MarketValue>
+			<WorkToMake>40000</WorkToMake>
+		</statBases>
+		<costList>
+			<Steel>100</Steel>
+			<Plasteel>20</Plasteel>
+			<ComponentIndustrial>4</ComponentIndustrial>
+		</costList>
+		<robotRepairCosts>
+			<Plasteel>7</Plasteel>
+			<ComponentIndustrial>2</ComponentIndustrial>
+		</robotRepairCosts>
+
+		<secondaryGraphicPath>Things/Building/AIRobot_RechargeStation/AIRobotRechargeStation_Empty1</secondaryGraphicPath>
+		<spawnThingDef>AIRobot_Hauler</spawnThingDef>
+	</ThingDef>
+
+	<ThingDef Class="AIRobot.X2_ThingDef_AIRobot_Building_RechargeStation" ParentName="Base_X2_AIRobotRechargeStation">
+		<defName>AIRobot_RechargeStation_Cleaner</defName>
+		<label>Cleaner Base Station</label>
+		<description>This station comes equipped with a specialized robot.</description>
+		<graphicData>
+			<texPath>Things/Building/AIRobot_RechargeStation/AIRobotRechargeStation_CBot</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<drawSize>(1,1)</drawSize>
+			<damageData>
+				<rect>(0.05,0.05,0.95,0.95)</rect>
+			</damageData>
+		</graphicData>
+		<statBases>
+			<MarketValue>1500</MarketValue>
+			<WorkToMake>40000</WorkToMake>
+		</statBases>
+		<costList>
+			<Steel>100</Steel>
+			<Plasteel>20</Plasteel>
+			<ComponentIndustrial>4</ComponentIndustrial>
+		</costList>
+		<robotRepairCosts>
+			<Plasteel>7</Plasteel>
+			<ComponentIndustrial>2</ComponentIndustrial>
+		</robotRepairCosts>
+
+		<secondaryGraphicPath>Things/Building/AIRobot_RechargeStation/AIRobotRechargeStation_Empty1</secondaryGraphicPath>
+		<spawnThingDef>AIRobot_Cleaner</spawnThingDef>
+	</ThingDef>
+
+
+
+</Defs>
